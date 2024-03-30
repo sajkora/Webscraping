@@ -15,13 +15,17 @@ body {
 }
 
 #generate-button {
-    padding: 10px 20px;
-    background-color: #13293D;
+    width: 180px;
+    height: 60px;
+    font-size: 20px;
+    padding: 15px 25px;
+    background-image: radial-gradient(#006494,#13293D);
     border: none;
     border-radius: 12px;
     cursor: pointer;
     margin-top: 20px;
     color: white;
+
 
 }
 
@@ -31,7 +35,7 @@ body {
     margin-top: 40px;
     padding: 40px;
     border-radius: 20px;
-    background-color: #1B98E0;
+    background-image: linear-gradient(to right,#247ba0,#1b98e0);
     text-align: center;
     color: white;
 }

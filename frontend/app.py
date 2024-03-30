@@ -9,7 +9,6 @@ def index():
 if __name__ == '__main__':
     app.run()
 
-app.debug = True
 
 #cd frontend
 #virtualenv flask
@@ -17,6 +16,5 @@ app.debug = True
 #flask\Scripts\activate.bat
 #cd frontend
 #pip install flask
-#xampp 
-#python -m flask run
+#python -m flask run --debug
 #port 5000
