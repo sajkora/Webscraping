@@ -1,9 +1,27 @@
 {% extends 'base.html' %}
 
-{%block head%}
-
+{% block head %}
+<title>Webscraping application</title>
 {% endblock %}
 
-{%block body%} 
-<h1>template</h1>
+{% block body %} 
+<div class="Block1" id="HeadingButton">
+    <h1>Find random cryptocurrencies by clicking the button below!</h1>
+    <button id="generate-button" alt="generate-button">Generate</button>
+</div>
+
+
+<div class="Block2" id="cryptocurrency-info">
+    <h2>Your random cryptocurrency is:</h2>
+    <p id="name">Name:</p>
+    <p id="price">Price:</p>
+    <p id="hourly-change">Hourly change:</p>
+    <p id="daily change">Daily chang:</p>
+    <p id ='weekly-change'>Weekly change:</p>
+    <p id="monthly-change">Monthly change:</p>
+    <p id="daily-volume">24h volume:</p>
+    <p id="circulating-supply">Circulating supply</p>
+    <p id="total-supply">Total supply</p>
+    <p id="market-cap">Market cap:</p>
+</div>
 {% endblock %}

@@ -1,4 +1,38 @@
 body {
-    margin: 0;
-    font-family:sans-serif
+    background-color: #e8f1f2;
+    font-family:sans-serif;
 }
+
+.Block1 {
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #1f89b7;
+    text-align: center;
+    color: white;
+}
+
+#generate-button {
+    padding: 10px 20px;
+    background-color: #13293D;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    color: white;
+
+}
+
+.Block2 {
+    width: 40%;
+    margin:auto;
+    margin-top: 40px;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #1B98E0;
+    text-align: center;
+    color: white;
+}
+
