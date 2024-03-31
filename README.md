@@ -25,9 +25,9 @@
   Uruchom `Poetry config virtualenvs.in-project true` w terminalu
 
 ## Wykonaj poetry install i shell:
-  Uruchom poetry install w folderze projektu (w terminalu)
+  Uruchom `poetry install` w folderze projektu (w terminalu)
 
-  Uruchom poetry shell w folderze projektu (w terminalu)
+  Uruchom `poetry shell` w folderze projektu (w terminalu)
 
 ## Playwright:
   w shellu uruchom `playwright install`
