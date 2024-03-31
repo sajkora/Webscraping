@@ -13,7 +13,8 @@
 
 ## Zainstaluj Poetry:
 
-  Upewnij się, że masz Pythona 3.6+ 
+  Upewnij się, że masz Pythona 3.6+
+ 
   Uruchom `pip install poetry` w VSC/PyCharmie
 
 ## Ustaw in-project venv w Poetry:
@@ -25,6 +26,7 @@
 
 ## Wykonaj poetry install i shell:
   Uruchom poetry install w folderze projektu (w terminalu)
+
   Uruchom poetry shell w folderze projektu (w terminalu)
 
 ## Playwright:
