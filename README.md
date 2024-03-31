@@ -17,7 +17,10 @@
   Uruchom `pip install poetry` w VSC/PyCharmie
 
 ## Ustaw in-project venv w Poetry:
-  Otwórz folder projektu Uruchom `poetry init` w folderze projektu
+  Otwórz folder projektu
+  
+  Uruchom `poetry init` w folderze projektu
+  
   W pyproject.toml dodaj: tool.poetry.virtualenvs = in-project
 
 ## Wykonaj poetry install i shell:
