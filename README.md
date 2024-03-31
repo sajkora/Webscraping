@@ -22,7 +22,7 @@
   
   Uruchom `poetry init` w folderze projektu
   
-  W pyproject.toml dodaj: tool.poetry.virtualenvs = in-project
+  Uruchom `Poetry config virtualenvs.in-project true` w terminalu
 
 ## Wykonaj poetry install i shell:
   Uruchom poetry install w folderze projektu (w terminalu)
