@@ -31,4 +31,4 @@
 
 ## Playwright:
   w shellu uruchom `playwright install`
-
+  w shellu `playwright install-deps`
