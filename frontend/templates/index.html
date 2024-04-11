@@ -7,21 +7,36 @@
 {% block body %} 
 <div class="Block1" id="HeadingButton">
     <h1>Find random cryptocurrencies by clicking the button below!</h1>
-    <button id="generate-button" alt="generate-button">Generate</button>
+    <form action="/generate" method="GET">
+        <button id="generate-button" alt="generate-button" type="submit">Generate</button>
+    </form >
 </div>
 
 
 <div class="Block2" id="cryptocurrency-info">
+    {% if row %}
     <h2>Your random cryptocurrency is:</h2>
-    <p id="name">Name:</p>
-    <p id="price">Price:</p>
-    <p id="hourly-change">Hourly change:</p>
-    <p id="daily change">Daily chang:</p>
-    <p id ='weekly-change'>Weekly change:</p>
-    <p id="monthly-change">Monthly change:</p>
-    <p id="daily-volume">24h volume:</p>
-    <p id="circulating-supply">Circulating supply</p>
-    <p id="total-supply">Total supply</p>
-    <p id="market-cap">Market cap:</p>
+    <p id="name">Name: {{ row[0] }}</p>
+    <p id="price">Price: {{ row[2] }}</p>
+    <p id="hourly-change">Hourly change: {{ row[3] }}</p>
+    <p id="daily-change">Daily chang: {{ row[4] }}</p>
+    <p id="weekly-change">Weekly change: {{ row[5] }}</p>
+    <p id="monthly-change">Monthly change: {{ row[6] }}</p>
+    <p id="daily-volume">24h volume: {{ row[7] }}</p>
+    <p id="circulating-supply">Circulating supply: {{ row[8] }}</p>
+    <p id="total-supply">Total supply: {{ row[9] }}</p>
+    {% else %}
+        <h2>Your random cryptocurrency is:</h2>
+    <p id="name1">Name:</p>
+    <p id="price1">Price:</p>
+    <p id="hourly-change1">Hourly change:</p>
+    <p id="daily-change1">Daily chang:</p>
+    <p id="weekly-change1">Weekly change:</p>
+    <p id="monthly-change1">Monthly change:</p>
+    <p id="daily-volume1">24h volume:</p>
+    <p id="circulating-supply1">Circulating supply:</p>
+    <p id="total-supply1">Total supply:</p>
+    <p>Please click the "Generate" button to generate random crypto data.</p>
+    {% endif %}
 </div>
 {% endblock %}

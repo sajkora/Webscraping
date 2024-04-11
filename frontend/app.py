@@ -1,4 +1,7 @@
-from flask import Flask, render_template, url_for
+import sys
+from flask import Flask, render_template, url_for, jsonify
+sys.path.append('./')
+from backend.Scraping.main import get_random_crypto, scrape_data
 
 app = Flask(__name__)
 
@@ -6,9 +9,17 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-if __name__ == '__main__':
-    app.run()
 
+@app.route('/generate', methods=['GET'])
+def generate():
+    row = get_random_crypto()
+    return render_template('index.html', row=row)
+
+
+if __name__ == '__main__':
+    scrape_data()
+    app.run()
+    
 
 #cd frontend
 #virtualenv flask
