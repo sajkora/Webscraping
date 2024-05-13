@@ -17,7 +17,7 @@ def scrape_data():
         page.goto("https://www.coingecko.com/en/all-cryptocurrencies")
         print(page.title())
         for _ in range (1,6):
-            page.click(selector='[data-target="all-coins.showMore"]')
+            page.click(selector='[data-more-content-target="loadMoreButton"]')
             sleep(0.5)
         kontent = page.content()
         browser.close()
@@ -84,4 +84,3 @@ def download_csv_to_folder():
     except Exception as e:
         print(f"Error occurred: {e}")
 
-download_csv_to_folder()

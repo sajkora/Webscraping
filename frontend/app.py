@@ -20,12 +20,3 @@ if __name__ == '__main__':
     scrape_data()
     app.run()
     
-
-#cd frontend
-#virtualenv flask
-#cd flask
-#flask\Scripts\activate.bat
-#cd frontend
-#pip install flask
-#python -m flask run --debug
-#port 5000
