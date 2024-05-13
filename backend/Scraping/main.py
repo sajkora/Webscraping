@@ -105,10 +105,3 @@ def write_user(user):
             flash('Account created successfully!', category='error')
     else:
         flash('Username already exists. Please choose a different username.', category='error')
-
-def authenticate(username, password):
-    users = read_users()
-    for user in users:
-        if user["username"] == username and user["password"] == password:
-            return True
-    return False

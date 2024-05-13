@@ -3,7 +3,7 @@ from flask import Flask, render_template, session, url_for, jsonify, redirect, r
 import csv
 import secrets
 sys.path.append('./')
-from backend.Scraping.main import get_random_crypto, scrape_data, download_csv_to_folder, read_users, write_user, authenticate
+from backend.Scraping.main import get_random_crypto, scrape_data, download_csv_to_folder, read_users, write_user
 
 app = Flask(__name__)
 
