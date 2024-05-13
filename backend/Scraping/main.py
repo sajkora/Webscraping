@@ -9,6 +9,7 @@ import os
 from tkinter import filedialog
 from tkinter import *
 import shutil
+from flask import flash
 
 def scrape_data():
     with sync_playwright() as p:
@@ -87,3 +88,27 @@ def download_csv_to_folder(directory=None):
     except Exception as e:
         print(f"Error occurred: {e}")
 
+
+def read_users():
+    users = pd.read_csv("users.csv")
+    return users.to_dict(orient="records")
+
+def write_user(user):
+    users = read_users()
+    if user['username'] not in [u['username'] for u in users]:
+        with open('users.csv', 'a', newline='') as csvfile:
+            fieldnames = ['username', 'password']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            if len(users) == 0:
+                writer.writeheader()
+            writer.writerow(user)
+            flash('Account created successfully!', category='error')
+    else:
+        flash('Username already exists. Please choose a different username.', category='error')
+
+def authenticate(username, password):
+    users = read_users()
+    for user in users:
+        if user["username"] == username and user["password"] == password:
+            return True
+    return False

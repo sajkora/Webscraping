@@ -10,6 +10,27 @@
     {% block head %}{% endblock %}
 </head>
 <body>
+    {% if session.username %}
+      <p>Welcome, {{ session.username }}!</p>
+      <p><a href="{{ url_for('logout') }}">Logout</a></p>
+    {% endif %}
+    <nav>
+        <ul>
+            {% if not session.username %}
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
     {% block body %}
         <link rel="stylesheet" href="{{ url_for('static', filename='js/script.js')}}">
     {% endblock %} 
