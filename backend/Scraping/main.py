@@ -65,11 +65,14 @@ def get_random_crypto():
         print(f"Error: Failed to read the file '{csv_file_path}' due to the following error: {e}")
         return None
     
-def download_csv_to_folder():
+def download_csv_to_folder(directory=None):
     root = Tk()
     root.withdraw()
 
-    folder_selected = filedialog.askdirectory()
+    if directory is None:
+        folder_selected = filedialog.askdirectory()
+    else:
+        folder_selected = directory
 
     
 

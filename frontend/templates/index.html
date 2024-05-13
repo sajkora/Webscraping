@@ -5,6 +5,17 @@
 {% endblock %}
 
 {% block body %} 
+<script>
+    function validateForm() {
+        var directoryInput = document.getElementById('directory');
+        if (directoryInput.value.trim() === '') {
+            alert("Please enter the directory path where you want to save the file.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
 <div class="Block1" id="HeadingButton">
     <h1>Find random cryptocurrencies by clicking the button below!</h1>
     <form action="/generate" method="GET">
@@ -38,5 +49,12 @@
     <p id="total-supply1">Total supply:</p>
     <p>Please click the "Generate" button to generate random crypto data.</p>
     {% endif %}
+</div>
+
+<div class="Block3" id="save-button">
+    <form action="/save-data" method="POST" onsubmit="return validateForm()">
+        <input type="text" id="directory" name="directory" placeholder="Enter directory path">
+        <button type="submit" name="save" id="save-button">Save data</button>
+    </form>
 </div>
 {% endblock %}
