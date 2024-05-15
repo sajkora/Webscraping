@@ -21,6 +21,8 @@ def home():
 
 @app.route('/generate', methods=['GET'])
 def generate():
+    if not session.get('username'):
+        return redirect(url_for('login'))
     row = get_random_crypto()
     return render_template('index.html', row=row)
 
