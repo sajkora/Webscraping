@@ -6,6 +6,8 @@ sys.path.append('./')
 from backend.Scraping.main import get_random_crypto, scrape_data, download_csv_to_folder, read_users, write_user
 
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #!(usunac to)!
+
 
 app.secret_key = secrets.token_hex(16)
 
@@ -65,5 +67,5 @@ def logout():
 
 if __name__ == '__main__':
     scrape_data()
-    app.run()
-    
+    app.run(debug=True)
+    #!(usunac debug true)!
