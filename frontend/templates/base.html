@@ -12,13 +12,13 @@
 <body>
   <nav class="navbar">
     <div class="container">
-      <div class="navbar-title">Webscraping application</div>
+      {% if session.username %}
+      <div class="navbar-title">Welcome, {{ session.username }}</div>
+      {% endif %}
         <ul class="navbar-nav">
           {% if session.username %}
-            <li>
-              <p>Welcome, {{ session.username }}!</p>
-              <p><a href="{{ url_for('logout') }}">Logout</a></p>
-            </li>
+              <li class="nav-item"><a href="{{ url_for('profile') }}" class="nav-link">Profile</a></li>
+              <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>           
           {% else %}
            <li><a href="/register">Register</a></li>
            <li><a href="/login">Login</a></li>

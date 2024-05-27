@@ -65,6 +65,10 @@ def logout():
     flash('Logout successful!', category='success')
     return redirect(url_for('login'))
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 if __name__ == '__main__':
     scrape_data()
     app.run(debug=True)

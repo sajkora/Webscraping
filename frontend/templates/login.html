@@ -5,12 +5,17 @@
 {% endblock %}
 
 {% block content %}
-<h1>Login</h1>
-<form action="/login" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" required><br>
-    <label for="password">Password:</label>
-    <input type="password" name="password" required><br>
-    <input type="submit" value="Login">
-</form>
+
+<div class="auth">
+    <container class="auth-container">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required><br>
+            <input type="submit" value="Login">
+        </form>
+    </container>
+</div>
 {% endblock %}

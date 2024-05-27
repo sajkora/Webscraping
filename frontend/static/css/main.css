@@ -98,3 +98,65 @@ body {
     margin-top: 20px;
     color: white;
 }
+
+#welcome-message {
+    color: white;
+    padding-right: 20px;
+}
+
+.auth {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth form {
+    display: flex;
+    flex-direction:column;
+}
+
+.auth label {
+    margin-bottom: 5px;
+}
+
+.auth-container input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.auth-container input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.auth input[type='submit']{
+    padding: 10px 50px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 55px;
+    cursor: pointer;
+    align-self: center;
+}
+
+.auth input[type='submit']:hover {
+    background-color: #555;
+}
+
+.auth .message {
+    text-align: center;
+    margin-top: 20px;
+}
