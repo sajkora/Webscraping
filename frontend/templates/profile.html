@@ -1,9 +1,45 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Webscraping app</title>
+<title>Profile</title>
 {% endblock %}
 
 {% block content %}
-<h1>profile.html</h1>
+<h1>Profile Page</h1>
+<p>Welcome, {{ session.username }}!</p>
+
+<h2>Favorite Cryptocurrencies</h2>
+<ul id="favoritesList">
+    {% for favorite in favorites %}
+    <li>
+        {{ favorite }}
+        <button class="remove-favorite-btn" onclick="removeFromFavorites('{{ favorite }}')">Remove</button>
+    </li>
+    {% endfor %}
+</ul>
+
+<script>
+function removeFromFavorites(cryptoName) {
+    fetch('/remove-from-favorites', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: cryptoName }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Remove the item from the list in the DOM
+            var listItem = document.querySelector(`li:contains('${cryptoName}')`);
+            if (listItem) {
+                listItem.remove();
+            }
+            alert('Removed from favorites!');
+        } else {
+            alert('Failed to remove from favorites.');
+        }
+    });
+}
+</script>
 {% endblock %}

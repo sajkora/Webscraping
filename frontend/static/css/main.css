@@ -6,7 +6,7 @@ body {
 }
 
 .navbar {
-    background-color: #02b125;
+    background-color: #000000;
     color: white;
     padding: 10px;
 }
@@ -26,6 +26,11 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 20px;
 }
 
 .nav-link {
@@ -63,7 +68,14 @@ body {
     cursor: pointer;
     margin-top: 20px;
     color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
+
+#generate-button:hover {
+    transform: scale(1.05);
+}
+
 
 .Block2 {
     width: 40%;
@@ -97,7 +109,14 @@ body {
     cursor: pointer;
     margin-top: 20px;
     color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
+
+.save-btn:hover {
+    transform: scale(1.05);
+}
+
 
 #welcome-message {
     color: white;
@@ -150,13 +169,102 @@ body {
     border-radius: 55px;
     cursor: pointer;
     align-self: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .auth input[type='submit']:hover {
     background-color: #555;
+    transform: scale(1.05);
 }
 
 .auth .message {
     text-align: center;
     margin-top: 20px;
 }
+
+#cryptoTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+
+#cryptoTable th, #cryptoTable td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+
+#cryptoTable th {
+    background-color: #333;
+    color: white;
+}
+
+
+#cryptoTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+#cryptoTable tr:hover {
+    background-color: #ddd;
+}
+
+
+#cryptoTable .up {
+    color: green;
+}
+
+
+#cryptoTable .down {
+    color: red;
+}
+
+
+#searchBar {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+
+.crypto-name {
+    position: relative;
+}
+
+
+.favorite-btn {
+    padding: 5px 10px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+.favorite-btn:hover {
+    background-color: #e6b800;
+    transform: scale(1.05);
+}
+
+
+.remove-favorite-btn {
+    padding: 5px 10px;
+    background-color: #ff3333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+.remove-favorite-btn:hover {
+    background-color: #cc0000;
+}
+

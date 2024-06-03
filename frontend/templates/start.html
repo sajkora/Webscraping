@@ -1,9 +1,19 @@
-{% extends 'base.html' %}
-
-{% block head %}
-<title>Webscraping app</title>
-{% endblock %}
-
-{% block content %}
-<h1>start.html</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/start.css') }}">
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <title>Webscraping Application</title>
+</head>
+<body>
+    <div class="start-container">
+        <h1>Welcome to the Webscraping Application</h1>
+        <div class="button-group">
+            <a href="{{ url_for('register') }}" class="btn">Register</a>
+            <a href="{{ url_for('login') }}" class="btn">Login</a>
+        </div>
+    </div>
+</body>
+</html>

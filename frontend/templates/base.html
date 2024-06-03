@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
     <title>Webscraping application</title>
-    <!--favicon-->
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -17,6 +16,8 @@
       {% endif %}
         <ul class="navbar-nav">
           {% if session.username %}
+              <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="{{ url_for('all_crypto') }}" class="nav-link">All Crypto</a></li>
               <li class="nav-item"><a href="{{ url_for('profile') }}" class="nav-link">Profile</a></li>
               <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>           
           {% else %}

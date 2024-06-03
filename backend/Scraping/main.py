@@ -11,28 +11,89 @@ from tkinter import *
 import shutil
 from flask import flash
 
+
+def clean_text(text):
+    """ Utility function to clean text by removing extra spaces and newlines. """
+    if text:
+        return ' '.join(text.split())
+    return 'N/A'
 def scrape_data():
+    
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=False)
         page = browser.new_page()
         page.goto("https://www.coingecko.com/en/all-cryptocurrencies")
         print(page.title())
         for _ in range (1,6):
-            page.click(selector='[data-more-content-target="loadMoreButton"]')
-            sleep(0.5)
+           selector = '[data-action="click->more-content#loadMoreContent"][data-more-content-target="loadMoreButton"]'
+           page.click(selector)
+           sleep(0.5)
         kontent = page.content()
         browser.close()
 
-    tables = []
+    data = []
     soup = BeautifulSoup(kontent, 'html.parser')
-    df_list = pd.read_html(str(soup))
-    for df in df_list:
-        tables.append(df)
+    rows = soup.select('table tbody tr[data-view-component="true"]')
+    print(f"Number of rows found: {len(rows)}")
+    for row in soup.select('table tbody tr[data-view-component="true"]'):
+        
+        name_element = row.select_one('.tw-text-gray-700.tw-font-semibold')
+        name = clean_text(name_element.text) if name_element else 'N/A'
+        
+        # Extract price
+        price_element = row.select_one('[data-price-target="price"]')
+        price = clean_text(price_element.text) if price_element else 'N/A'
+        
+        def get_change_and_direction(td_index):
+            change_element = row.select_one(f'td:nth-of-type({td_index}) .gecko-down, td:nth-of-type({td_index}) .gecko-up')
+            if change_element:
+                change = clean_text(change_element.text)
+                direction = 'down' if 'gecko-down' in change_element.get('class', []) else 'up'
+            else:
+                change = 'N/A'
+                direction = 'N/A'
+            return change, direction
 
-    master_table = pd.concat(tables)
-    master_table = master_table.loc[:,master_table.columns[1:-1]]
-    master_table.to_csv('Crypto Data.csv', index=False)
+        change_1h, direction_1h = get_change_and_direction(4)
+        change_24h, direction_24h = get_change_and_direction(5)
+        change_7d, direction_7d = get_change_and_direction(6)
+        change_30d, direction_30d = get_change_and_direction(7)
 
+        # Extract 24h volume and supplies
+        volume_24h_element = row.select_one('td:nth-of-type(8)')
+        volume_24h = clean_text(volume_24h_element.text) if volume_24h_element else 'N/A'
+        
+        circulating_supply_element = row.select_one('td:nth-of-type(9)')
+        circulating_supply = clean_text(circulating_supply_element.text) if circulating_supply_element else 'N/A'
+        
+        total_supply_element = row.select_one('td:nth-of-type(10)')
+        total_supply = clean_text(total_supply_element.text) if total_supply_element else 'N/A'
+        
+
+        data.append({
+            'Name': name,
+            'Price': price,
+            'Change 1h': change_1h,
+            'Direction 1h': direction_1h,
+            'Change 24h': change_24h,
+            'Direction 24h': direction_24h,
+            'Change 7d': change_7d,
+            'Direction 7d': direction_7d,
+            'Change 30d': change_30d,
+            'Direction 30d': direction_30d,
+            '24h Volume': volume_24h,
+            'Circulating Supply': circulating_supply,
+            'Total Supply': total_supply
+        })
+
+    df = pd.DataFrame(data)
+    if not df.empty:
+        df.to_csv('Crypto Data.csv', index=False)
+        print("CSV file has been written.")
+    else:
+        print("DataFrame is empty. No file written.")
+
+ 
 
 def get_random_crypto():
     project_dir = "./"
@@ -105,3 +166,5 @@ def write_user(user):
             flash('Account created successfully!', category='error')
     else:
         flash('Username already exists. Please choose a different username.', category='error')
+
+
