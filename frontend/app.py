@@ -100,6 +100,7 @@ def add_to_favorites():
 
     return jsonify({'success': True})
 
+
 @app.route('/profile')
 def profile():
     if not session.get('username'):
@@ -109,8 +110,9 @@ def profile():
     favorites = []
 
     if os.path.exists(favorites_file):
-        df = pd.read_csv(favorites_file)
-        favorites = df['Name'].tolist()
+        favorites_names = pd.read_csv(favorites_file)['Name'].tolist()
+        all_cryptos_df = pd.read_csv('Crypto Data.csv')
+        favorites = all_cryptos_df[all_cryptos_df['Name'].isin(favorites_names)].to_dict(orient='records')
 
     return render_template('profile.html', favorites=favorites)
 

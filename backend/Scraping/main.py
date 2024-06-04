@@ -40,7 +40,6 @@ def scrape_data():
         name_element = row.select_one('.tw-text-gray-700.tw-font-semibold')
         name = clean_text(name_element.text) if name_element else 'N/A'
         
-        # Extract price
         price_element = row.select_one('[data-price-target="price"]')
         price = clean_text(price_element.text) if price_element else 'N/A'
         
@@ -59,7 +58,6 @@ def scrape_data():
         change_7d, direction_7d = get_change_and_direction(6)
         change_30d, direction_30d = get_change_and_direction(7)
 
-        # Extract 24h volume and supplies
         volume_24h_element = row.select_one('td:nth-of-type(8)')
         volume_24h = clean_text(volume_24h_element.text) if volume_24h_element else 'N/A'
         
