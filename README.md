@@ -17,11 +17,11 @@
 
 ## Stos technologiczny
 ## Architektura rozwoju:
-Frontend: Flask, HTML, CSS
-Backend: Python
+- Frontend: Flask, HTML, CSS
+- Backend: Python
 
 ## Architektura uruchumieniowa:
-Python, Poetry
+- Python, Poetry
 
 ## Instalacja Pythona i Poetry
 ## Zainstaluj pyenv: 
