@@ -15,15 +15,15 @@
 <div class="Block2" id="cryptocurrency-info">
     {% if row %}
     <h2>Your random cryptocurrency is:</h2>
-    <p id="name">Name: {{ row[0] }}</p>
-    <p id="price">Price: {{ row[2] }}</p>
-    <p id="hourly-change">Hourly change: {{ row[3] }}</p>
-    <p id="daily-change">Daily chang: {{ row[4] }}</p>
-    <p id="weekly-change">Weekly change: {{ row[5] }}</p>
-    <p id="monthly-change">Monthly change: {{ row[6] }}</p>
-    <p id="daily-volume">24h volume: {{ row[7] }}</p>
-    <p id="circulating-supply">Circulating supply: {{ row[8] }}</p>
-    <p id="total-supply">Total supply: {{ row[9] }}</p>
+    <p id="name">Name: {{ row['name'] }}</p>
+    <p id="price">Price: {{ row['price'] }}</p>
+    <p id="hourly-change">Hourly change: {{ row['change_1h'] }}</p>
+    <p id="daily-change">Daily chang: {{ row['change_24h'] }}</p>
+    <p id="weekly-change">Weekly change: {{ row['change_7d'] }}</p>
+    <p id="monthly-change">Monthly change: {{ row['change_30d'] }}</p>
+    <p id="daily-volume">24h volume: {{ row['volume_24h'] }}</p>
+    <p id="circulating-supply">Circulating supply: {{ row['circulating_supply'] }}</p>
+    <p id="total-supply">Total supply: {{ row['total_supply'] }}</p>
     {% else %}
         <h2>Your random cryptocurrency is:</h2>
     <p id="name1">Name:</p>

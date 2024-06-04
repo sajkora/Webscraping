@@ -29,17 +29,17 @@
         {% for crypto in favorites %}
         <tr>
             <td>
-                <button class="remove-favorite-btn" onclick="removeFromFavorites('{{ crypto['Name'] }}')">Remove</button>
+                <button class="remove-favorite-btn" onclick="removeFromFavorites('{{ crypto.name }}')">Remove</button>
             </td>
-            <td>{{ crypto['Name'] }}</td>
-            <td>{{ crypto['Price'] }}</td>
-            <td class="{{ 'up' if crypto['Direction 1h'] == 'up' else 'down' }}">{{ crypto['Change 1h'] }}</td>
-            <td class="{{ 'up' if crypto['Direction 24h'] == 'up' else 'down' }}">{{ crypto['Change 24h'] }}</td>
-            <td class="{{ 'up' if crypto['Direction 7d'] == 'up' else 'down' }}">{{ crypto['Change 7d'] }}</td>
-            <td class="{{ 'up' if crypto['Direction 30d'] == 'up' else 'down' }}">{{ crypto['Change 30d'] }}</td>
-            <td>{{ crypto['24h Volume'] }}</td>
-            <td>{{ crypto['Circulating Supply'] }}</td>
-            <td>{{ crypto['Total Supply'] }}</td>
+            <td>{{ crypto.name }}</td>
+            <td>{{ crypto.price }}</td>
+            <td class="{{ 'up' if crypto.direction_1h == 'up' else 'down' }}">{{ crypto.change_1h }}</td>
+            <td class="{{ 'up' if crypto.direction_24h == 'up' else 'down' }}">{{ crypto.change_24h }}</td>
+            <td class="{{ 'up' if crypto.direction_7d == 'up' else 'down' }}">{{ crypto.change_7d }}</td>
+            <td class="{{ 'up' if crypto.direction_30d == 'up' else 'down' }}">{{ crypto.change_30d }}</td>
+            <td>{{ crypto.volume_24h }}</td>
+            <td>{{ crypto.circulating_supply }}</td>
+            <td>{{ crypto.total_supply }}</td>
         </tr>
         {% endfor %}
     </tbody>

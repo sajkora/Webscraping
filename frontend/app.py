@@ -1,3 +1,4 @@
+from io import BytesIO
 import sys
 from flask import Flask, render_template, session, url_for, jsonify, redirect, request, flash
 import csv
@@ -83,12 +84,22 @@ def all_crypto():
     if not session.get('username'):
         return redirect(url_for('login'))
 
-    csv_file_path = 'Crypto Data.csv'
-    if not os.path.exists(csv_file_path):
-        flash("No data available. Please run the scraper first.", category='error')
+    try:
+        connection = get_db_connection()
+        query = "SELECT * FROM crypto_data"
+        df = pd.read_sql(query, connection)
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        flash("Failed to retrieve data from the database.", category='error')
         return redirect(url_for('home'))
-    
-    df = pd.read_csv(csv_file_path)
+    finally:
+        if connection.is_connected():
+            connection.close()
+
+    if df.empty:
+        flash("No data available.", category='error')
+        return redirect(url_for('home'))
+
     all_cryptos = df.to_dict(orient='records')
     return render_template('all_crypto.html', all_cryptos=all_cryptos)
 
@@ -143,8 +154,8 @@ def profile():
             favorites = cursor.fetchall()
             favorite_names = [favorite['crypto_name'] for favorite in favorites]
 
-            all_cryptos_df = pd.read_csv('Crypto Data.csv')
-            favorites_list = all_cryptos_df[all_cryptos_df['Name'].isin(favorite_names)].to_dict(orient='records')
+            all_cryptos_df = pd.read_sql("SELECT * FROM crypto_data", connection)
+            favorites_list = all_cryptos_df[all_cryptos_df['name'].isin(favorite_names)].to_dict(orient='records')
 
             return render_template('profile.html', favorites=favorites_list)
         else:
@@ -192,13 +203,32 @@ def remove_from_favorites():
 
 @app.route('/download-csv')
 def download_csv():
-    csv_file_path = 'Crypto Data.csv'
-    if not os.path.exists(csv_file_path):
-        flash("No data available. Please run the scraper first.", category='error')
+    try:
+        connection = get_db_connection()
+        query = "SELECT * FROM crypto_data"
+        df = pd.read_sql(query, connection)
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        flash("Failed to retrieve data from the database.", category='error')
         return redirect(url_for('home'))
-    
-    return send_file(csv_file_path, as_attachment=True, attachment_filename='Crypto_Data.csv')
+    finally:
+        if connection.is_connected():
+            connection.close()
 
+    if df.empty:
+        flash("No data available.", category='error')
+        return redirect(url_for('home'))
+
+    csv_buffer = BytesIO()
+    df.to_csv(csv_buffer, index=False)
+    csv_buffer.seek(0)
+
+    return send_file(
+        csv_buffer,
+        mimetype='text/csv',
+        as_attachment=True,
+        download_name='Crypto_Data.csv'  # Updated keyword argument
+    )
 
 
 if __name__ == '__main__':

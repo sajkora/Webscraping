@@ -19,6 +19,9 @@ db_config = {
     'database': 'usersdb'
 }
 
+def get_db_connection():
+    return mysql.connector.connect(**db_config)
+
 def clean_text(text):
     """ Utility function to clean text by removing extra spaces and newlines. """
     if text:
@@ -29,6 +32,9 @@ def insert_data_to_db(data):
     try:
         connection = mysql.connector.connect(**db_config)
         cursor = connection.cursor()
+
+        delete_query = "DELETE FROM crypto_data"
+        cursor.execute(delete_query)
 
         insert_query = """
         INSERT INTO crypto_data (
@@ -128,36 +134,27 @@ def scrape_data():
  
 
 def get_random_crypto():
-    project_dir = "./"
-    csv_file_path = os.path.join(project_dir, 'Crypto Data.csv')
-
-    if not os.path.exists(csv_file_path):
-        print(f"Error: The file '{csv_file_path}' does not exist.")
-        return None
-
-    if not os.path.isfile(csv_file_path):
-        print(f"Error: The file '{csv_file_path}' is not a valid file.")
-        return None
-
-    if os.stat(csv_file_path).st_size == 0:
-        print(f"Error: The file '{csv_file_path}' is empty.")
-        return None
-
     try:
-        with open(csv_file_path, 'r', encoding='utf-8') as csvfile:
-            reader = csv.reader(csvfile)
-            rows = list(reader)
+        connection = get_db_connection()
+        cursor = connection.cursor(dictionary=True)
 
-            if not rows:
-                print(f"Error: The file '{csv_file_path}' is empty or contains invalid data.")
-                return None
+        cursor.execute("SELECT * FROM crypto_data")
+        rows = cursor.fetchall()
 
-            random_row = random.choice(rows)
-            return random_row
+        if not rows:
+            print("Error: No data available in the database.")
+            return None
 
-    except Exception as e:
-        print(f"Error: Failed to read the file '{csv_file_path}' due to the following error: {e}")
+        random_row = random.choice(rows)
+        return random_row
+
+    except mysql.connector.Error as err:
+        print(f"Error: Failed to retrieve data from the database due to the following error: {err}")
         return None
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
     
 def download_csv_to_folder(directory=None):
     root = Tk()
