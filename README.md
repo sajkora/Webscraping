@@ -1,7 +1,7 @@
-#Aplikacja Webscrapingowa
-##Aplikacja Webscrapingowa dla strony CoinGecko
-##Aplikacja webscrapingowa jest narzędziem, które automatycznie pobiera dane z wybranej strony internetowej
-##Jej główne cele i funkcje to:
+# Aplikacja Webscrapingowa
+## Aplikacja Webscrapingowa dla strony CoinGecko
+## Aplikacja webscrapingowa jest narzędziem, które automatycznie pobiera dane z wybranej strony internetowej
+## Jej główne cele i funkcje to:
 Pobieranie danych: Aplikacja pobiera informacje z witryny CoinGecko. Dane te obejmują między innymi:Ceny kryptowalut, wzrost lub spadek cen, podaż
 Wyświetlanie danych: Aplikacja wyświetla dane które pobrała w postaci tabeli
 Logowanie oraz Rejestracja: Użytkownicy po założeniu konta mogą dodawać wybrane kryptowaluty do ulubionych
@@ -15,12 +15,12 @@ Logowanie oraz Rejestracja: Użytkownicy po założeniu konta mogą dodawać wyb
 | 5             | Dokumentacja     | Poświadczenie ze strony o legalności wykonywanego scrapingu | 2 | Wymagania funkcjonalne |
 
 
-##Stos technologiczny
-##Architektura rozwoju:
+## Stos technologiczny
+## Architektura rozwoju:
 Frontend: Flask, HTML, CSS
 Backend: Python
 
-##Architektura uruchumieniowa:
+## Architektura uruchumieniowa:
 Python, Poetry
 
 ## Instalacja Pythona i Poetry
