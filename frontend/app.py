@@ -6,6 +6,7 @@ sys.path.append('./')
 from backend.Scraping.main import get_random_crypto, scrape_data, download_csv_to_folder, read_users, write_user
 import os
 import pandas as pd
+from flask import send_file
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 
@@ -54,7 +55,6 @@ def login():
         users = read_users()
         if (username, password) in [(u['username'], u['password']) for u in users]:
             session['username'] = username
-            flash('Login successful!', category='success')
             return redirect('/home')
         else:
             flash('Invalid username or password. Please try again.', category='error')
@@ -131,6 +131,17 @@ def remove_from_favorites():
         return jsonify({'success': True})
 
     return jsonify({'success': False, 'message': 'Favorites file does not exist'})
+
+
+@app.route('/download-csv')
+def download_csv():
+    csv_file_path = 'Crypto Data.csv'
+    if not os.path.exists(csv_file_path):
+        flash("No data available. Please run the scraper first.", category='error')
+        return redirect(url_for('home'))
+    
+    return send_file(csv_file_path, as_attachment=True, attachment_filename='Crypto_Data.csv')
+
 
 
 if __name__ == '__main__':

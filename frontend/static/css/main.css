@@ -89,32 +89,13 @@ body {
 }
 
 .Block3 {
-    width: 60%;
+    width: 30%;
     margin: auto;
-    margin-top: 40px;
-    padding: 40px;
+    margin-top: 20px;
+    padding: 20px;
     border-radius: 20px;
     text-align: center;
     color: white;
-}
-
-#save-button {
-    width: 180px;
-    height: 60px;
-    font-size: 20px;
-    padding: 15px 25px;
-    background-image: radial-gradient(#006494,#13293D);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    margin-top: 20px;
-    color: white;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-
-.save-btn:hover {
-    transform: scale(1.05);
 }
 
 
@@ -268,3 +249,19 @@ body {
     background-color: #cc0000;
 }
 
+
+.save-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+
+.save-btn:hover {
+    background-color: #555;
+}

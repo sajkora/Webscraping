@@ -5,24 +5,12 @@
 {% endblock %}
 
 {% block content %} 
-<script>
-    function validateForm() {
-        var directoryInput = document.getElementById('directory');
-        if (directoryInput.value.trim() === '') {
-            alert("Please enter the directory path where you want to save the file.");
-            return false;
-        }
-        return true;
-    }
-</script>
-
 <div class="Block1" id="HeadingButton">
     <h1>Find random cryptocurrencies by clicking the button below!</h1>
     <form action="/generate" method="GET">
         <button id="generate-button" alt="generate-button" type="submit">Generate</button>
     </form >
 </div>
-
 
 <div class="Block2" id="cryptocurrency-info">
     {% if row %}
@@ -51,10 +39,7 @@
     {% endif %}
 </div>
 
-<div class="Block3" id="save-button">
-    <form action="/save-data" method="POST" onsubmit="return validateForm()">
-        <input type="text" id="directory" name="directory" placeholder="Enter directory path">
-        <button type="submit" name="save" id="save-button" class="save-btn">Save data</button>
-    </form>
+<div class="Block3" id="download-button-container">
+    <a href="{{ url_for('download_csv') }}" class="save-btn">Download Data</a>
 </div>
 {% endblock %}
