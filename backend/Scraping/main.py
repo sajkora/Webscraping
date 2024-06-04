@@ -14,7 +14,7 @@ import mysql.connector
 
 db_config = {
     'user': 'root',
-    'password': 'haslo123',
+    'password': 'admin',
     'host': 'localhost',
     'database': 'usersdb'
 }

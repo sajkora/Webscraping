@@ -18,7 +18,7 @@ app.secret_key = secrets.token_hex(16)
 
 db_config = {
     'user': 'root',
-    'password': 'haslo123',
+    'password': 'admin',
     'host': 'localhost',
     'database': 'usersdb'
 }

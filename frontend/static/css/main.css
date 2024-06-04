@@ -52,7 +52,7 @@ body {
     margin-top: 40px;
     padding: 40px;
     border-radius: 20px;
-    background-color: #1f89b7;
+    background-color: #36454f;
     text-align: center;
     color: white;
 }
@@ -62,7 +62,7 @@ body {
     height: 60px;
     font-size: 20px;
     padding: 15px 25px;
-    background-image: radial-gradient(#006494,#13293D);
+    background-image: radial-gradient(#323232,#000000);
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -83,7 +83,7 @@ body {
     margin-top: 40px;
     padding: 40px;
     border-radius: 20px;
-    background-image: linear-gradient(to right,#247ba0,#1b98e0);
+    background-image: linear-gradient(to right,#4d5355,#302f2f);
     text-align: center;
     color: white;
 }
@@ -264,4 +264,5 @@ body {
 
 .save-btn:hover {
     background-color: #555;
+    transform: scale(1.05);
 }
