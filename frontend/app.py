@@ -227,11 +227,10 @@ def download_csv():
         csv_buffer,
         mimetype='text/csv',
         as_attachment=True,
-        download_name='Crypto_Data.csv'  # Updated keyword argument
+        download_name='Crypto_Data.csv'
     )
 
 
 if __name__ == '__main__':
     scrape_data()
-    app.run(debug=True)
-    #!(usunac debug true)!
+    app.run()
