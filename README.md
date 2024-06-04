@@ -14,13 +14,17 @@
 | 4             | Mozliwosc pobrania arkusza     | Możliwość pobrania zescrapowanego arkusza za pomocą dedykowanego przycisku | 2 | Wymagania funkcjonalne |
 | 5             | Dokumentacja     | Poświadczenie ze strony o legalności wykonywanego scrapingu | 2 | Wymagania funkcjonalne |
 
+## Autorzy
+- Adrian Sikora
+- Mikołaj Czarnecki
+- Kacper Olszewski
 
-
+## Licencja MIT
 
 ### Stos technologiczny
 ### Architektura rozwoju:
 - Frontend: Flask, HTML, CSS
-- Backend: Python
+- Backend: Python, MySQL
 
 ### Architektura uruchumieniowa:
 - Python, Poetry
