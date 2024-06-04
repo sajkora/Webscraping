@@ -52,7 +52,7 @@ body {
     margin-top: 40px;
     padding: 40px;
     border-radius: 20px;
-    background-color: #36454f;
+    background-image: linear-gradient(to right,#4d5355,#302f2f);
     text-align: center;
     color: white;
 }
