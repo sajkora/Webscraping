@@ -21,7 +21,7 @@
 ### Architektura rozwoju:
 - Frontend: Flask, HTML, CSS
 - Backend: Python
-- 
+
 ### Architektura uruchumieniowa:
 - Python, Poetry
 
