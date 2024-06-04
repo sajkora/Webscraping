@@ -6,12 +6,23 @@ sys.path.append('./')
 from backend.Scraping.main import get_random_crypto, scrape_data, download_csv_to_folder, read_users, write_user
 import os
 import pandas as pd
+import mysql.connector
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 
 
 
 app.secret_key = secrets.token_hex(16)
+
+db_config = {
+    'user': 'root',
+    'password': 'haslo123',
+    'host': 'localhost',
+    'database': 'usersdb'
+}
+
+def get_db_connection():
+    return mysql.connector.connect(**db_config)
 
 @app.route('/')
 def index():
@@ -87,34 +98,65 @@ def add_to_favorites():
         return jsonify({'success': False, 'message': 'Not logged in'})
 
     crypto_name = request.json.get('name')
-    favorites_file = f'{session.get("username")}_favorites.csv'
+    username = session.get('username')
 
-    if not os.path.exists(favorites_file):
-        with open(favorites_file, 'w', newline='') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(['Name'])
+    try:
+        connection = get_db_connection()
+        cursor = connection.cursor()
 
-    with open(favorites_file, 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow([crypto_name])
+        cursor.execute("SELECT id FROM users WHERE username = %s", (username,))
+        user = cursor.fetchone()
 
-    return jsonify({'success': True})
+        if user:
+            user_id = user[0]
+            cursor.execute("INSERT INTO favorites (user_id, crypto_name) VALUES (%s, %s) ON DUPLICATE KEY UPDATE crypto_name=crypto_name", (user_id, crypto_name))
+            connection.commit()
+            return jsonify({'success': True})
+        else:
+            return jsonify({'success': False, 'message': 'User not found'})
 
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return jsonify({'success': False, 'message': 'Database error'})
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
 
 @app.route('/profile')
 def profile():
     if not session.get('username'):
         return redirect(url_for('login'))
 
-    favorites_file = f'{session.get("username")}_favorites.csv'
-    favorites = []
+    username = session.get('username')
 
-    if os.path.exists(favorites_file):
-        favorites_names = pd.read_csv(favorites_file)['Name'].tolist()
-        all_cryptos_df = pd.read_csv('Crypto Data.csv')
-        favorites = all_cryptos_df[all_cryptos_df['Name'].isin(favorites_names)].to_dict(orient='records')
+    try:
+        connection = get_db_connection()
+        cursor = connection.cursor(dictionary=True)
 
-    return render_template('profile.html', favorites=favorites)
+        cursor.execute("SELECT id FROM users WHERE username = %s", (username,))
+        user = cursor.fetchone()
+
+        if user:
+            user_id = user['id']
+            cursor.execute("SELECT crypto_name FROM favorites WHERE user_id = %s", (user_id,))
+            favorites = cursor.fetchall()
+            favorite_names = [favorite['crypto_name'] for favorite in favorites]
+
+            all_cryptos_df = pd.read_csv('Crypto Data.csv')
+            favorites_list = all_cryptos_df[all_cryptos_df['Name'].isin(favorite_names)].to_dict(orient='records')
+
+            return render_template('profile.html', favorites=favorites_list)
+        else:
+            return redirect(url_for('login'))
+
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return render_template('profile.html', favorites=[])
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
 
 @app.route('/remove-from-favorites', methods=['POST'])
 def remove_from_favorites():
@@ -122,15 +164,30 @@ def remove_from_favorites():
         return jsonify({'success': False, 'message': 'Not logged in'})
 
     crypto_name = request.json.get('name')
-    favorites_file = f'{session.get("username")}_favorites.csv'
+    username = session.get('username')
 
-    if os.path.exists(favorites_file):
-        df = pd.read_csv(favorites_file)
-        df = df[df['Name'] != crypto_name]  
-        df.to_csv(favorites_file, index=False)
-        return jsonify({'success': True})
+    try:
+        connection = get_db_connection()
+        cursor = connection.cursor()
 
-    return jsonify({'success': False, 'message': 'Favorites file does not exist'})
+        cursor.execute("SELECT id FROM users WHERE username = %s", (username,))
+        user = cursor.fetchone()
+
+        if user:
+            user_id = user[0]
+            cursor.execute("DELETE FROM favorites WHERE user_id = %s AND crypto_name = %s", (user_id, crypto_name))
+            connection.commit()
+            return jsonify({'success': True})
+        else:
+            return jsonify({'success': False, 'message': 'User not found'})
+
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return jsonify({'success': False, 'message': 'Database error'})
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
 
 
 if __name__ == '__main__':
