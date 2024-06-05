@@ -14,7 +14,7 @@ import mysql.connector
 
 db_config = {
     'user': 'root',
-    'password': 'admin',
+    'password': 'haslo123',
     'host': 'localhost',
     'database': 'usersdb'
 }
@@ -156,28 +156,6 @@ def get_random_crypto():
             cursor.close()
             connection.close()
     
-def download_csv_to_folder(directory=None):
-    root = Tk()
-    root.withdraw()
-
-    if directory is None:
-        folder_selected = filedialog.askdirectory()
-    else:
-        folder_selected = directory
-
-    
-
-    try:
-        if os.path.exists("Crypto Data.csv"):
-            destination_file_path = os.path.join(folder_selected, "Crypto Data.csv")
-
-            shutil.copyfile("Crypto Data.csv", destination_file_path)
-            print(f"File 'Crypto Data.csv' downloaded to: {destination_file_path}")
-        else:
-            print(f"Error: Source file '{"Crypto Data.csv"}' not found.")
-    except Exception as e:
-        print(f"Error occurred: {e}")
-
 
 def read_users():
     try:

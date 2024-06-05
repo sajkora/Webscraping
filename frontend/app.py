@@ -4,7 +4,7 @@ from flask import Flask, render_template, session, url_for, jsonify, redirect, r
 import csv
 import secrets
 sys.path.append('./')
-from backend.Scraping.main import get_random_crypto, scrape_data, download_csv_to_folder, read_users, write_user
+from backend.Scraping.main import get_random_crypto, scrape_data, read_users, write_user
 import os
 import pandas as pd
 import mysql.connector
@@ -18,7 +18,7 @@ app.secret_key = secrets.token_hex(16)
 
 db_config = {
     'user': 'root',
-    'password': 'admin',
+    'password': 'haslo123',
     'host': 'localhost',
     'database': 'usersdb'
 }
@@ -43,11 +43,6 @@ def generate():
     row = get_random_crypto()
     return render_template('index.html', row=row)
 
-@app.route('/save-data', methods=['POST'])
-def save_data():
-    directory = request.form.get('directory')
-    download_csv_to_folder(directory)
-    return redirect('/home')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
