@@ -2,7 +2,7 @@
 
 ## Aplikacja webscrapingowa jest narzędziem, które automatycznie pobiera dane z wybranej strony internetowej
 ## Jej główne cele i funkcje to:
-- Pobieranie danych: Aplikacja pobiera informacje z witryny CoinGecko. Dane te obejmują między innymi:Ceny kryptowalut, wzrost lub spadek cen, podaż
+- Pobieranie danych: Aplikacja pobiera informacje z witryny CoinGecko. Dane te obejmują między innymi: Ceny kryptowalut, wzrost lub spadek cen, podaż
 - Wyświetlanie danych: Aplikacja wyświetla dane które pobrała w postaci tabeli
 - Logowanie oraz Rejestracja: Użytkownicy po założeniu konta mogą dodawać wybrane kryptowaluty do ulubionych
 - Dodawanie oraz usuwanie kryptowalut do ulubionych, które można wyświetlić w zakładce Profil
