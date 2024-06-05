@@ -16,7 +16,7 @@
 | 4             | Logowanie i rejestracja     | Użytkownicy aby korzystać z aplikacji muszą być zalogowani | 1 | Wymagania funkcjonalne |
 | 5             | Dodawanie i usuwanie ulubionych kryptowalut     | Dostęp do listy ulubionych kryptowalut w zakładce Profil | 2 | Wymagania funkcjonalne |
 | 6             | Mozliwosc pobrania arkusza     | Możliwość pobrania zescrapowanego arkusza za pomocą dedykowanego przycisku | 2 | Wymagania funkcjonalne |
-| 7             | Dokumentacja     | Poświadczenie ze strony o legalności wykonywanego scrapingu | 3 | Wymagania niefunkcjonalne |
+| 7             | Dokumentacja     | Rozstrzygnięcie legalności wykonywanego scrapingu | 3 | Wymagania niefunkcjonalne |
 
 ## Autorzy
 - Adrian Sikora
