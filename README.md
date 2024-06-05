@@ -25,6 +25,8 @@
 
 ## Licencja MIT
 
+### ==========================================================================================================================
+
 ### Stos technologiczny
 ### Architektura rozwoju:
 - Frontend: Flask, HTML, CSS
@@ -35,8 +37,12 @@
 - Playwright - biblioteka imitująca przeglądarkę w celu ułatwienia scrapingu
 - Pandas - biblioteka umożliwiająca manipulację danymi
 
-### Architektura uruchumieniowa:
+### Architektura uruchomieniowa:
 - Python, Poetry
+
+
+### ==========================================================================================================================
+
 
 ### Instalacja Pythona i Poetry
 ### Zainstaluj pyenv: 
