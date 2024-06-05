@@ -28,10 +28,12 @@
 ### Stos technologiczny
 ### Architektura rozwoju:
 - Frontend: Flask, HTML, CSS
+- Backend: Python, MySQL
+
+###Wykorzystane biblioteki:
 - BeautifulSoup - biblioteka umożliwiająca scraping danych poprzez przeglądanie kodu HTML wybranej strony
 - Playwright - biblioteka imitująca przeglądarkę w celu ułatwienia scrapingu
 - Pandas - biblioteka umożliwiająca manipulację danymi
-- Backend: Python, MySQL
 
 ### Architektura uruchumieniowa:
 - Python, Poetry
