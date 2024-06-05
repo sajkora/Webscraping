@@ -51,7 +51,7 @@ def register():
         password = request.form['password']
         user = {"username": username, "password": password}
         write_user(user)
-        return redirect(url_for('register'))
+        return redirect(url_for('login'))
     return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -72,7 +72,7 @@ def login():
 def logout():
     session.pop('username', None)
     flash('Logout successful!', category='success')
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 @app.route('/all-crypto')
 def all_crypto():
