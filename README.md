@@ -46,34 +46,34 @@
 ### ===========================================================
 ## Testy
 - Scraping giełdy kryptowalut
--- Skrypt do scrapowania giełdy kryptowalut uruchamiany jest wraz z aplikacją.
+  - Skrypt do scrapowania giełdy kryptowalut uruchamiany jest wraz z aplikacją.
 
 - Autentykacja
--- Niezalogowany użytkownik powinien móc wyświetlić tylko i wyłącznie stronę startową.
+  - Niezalogowany użytkownik powinien móc wyświetlić tylko i wyłącznie stronę startową.
 
 - Rejestracja użytkowników
--- Użytkownik powinien mieć możliwość zarejestrowania się w aplikacji z poziomu strony startowej.
+  - Użytkownik powinien mieć możliwość zarejestrowania się w aplikacji z poziomu strony startowej.
 
 - Logowanie użytkowników
--- Użytkownik powinien mieć możliwość zalogowania się w aplikacji z poziomu strony startowej.
+  - Użytkownik powinien mieć możliwość zalogowania się w aplikacji z poziomu strony startowej.
 
 - Losowanie kryptowalut
--- Zalogowany użytkownik powinien mieć możliwość wylosowania jednej z kilkuset dostępnych kryptowalut.
+  - Zalogowany użytkownik powinien mieć możliwość wylosowania jednej z kilkuset dostępnych kryptowalut.
 
 - Dostęp do całego arkusza
--- Zalogowany użytkownik powinien mieć możliwość przejrzenia wszystkich zescrapowanych danych.
+  - Zalogowany użytkownik powinien mieć możliwość przejrzenia wszystkich zescrapowanych danych.
 
 - Pobranie arkusza
--- Zalogowany użytkownik powinien mieć możliwość pobrania wszystkich zescrapowanych danych.
+  - Zalogowany użytkownik powinien mieć możliwość pobrania wszystkich zescrapowanych danych.
 
 - Dodanie kryptowalut do sekcji ulubione w ramach śledzenia ich zmian
--- Zalogowany użytkownik powinien mieć możliwość dodania wielu kryptowalut do sekcji "ulubione" z poziomu tabeli ze wszystkimi kryptowalutami. Jedną kryptowalutę mógłby dodać tylko raz.
+  - Zalogowany użytkownik powinien mieć możliwość dodania wielu kryptowalut do sekcji "ulubione" z poziomu tabeli ze wszystkimi kryptowalutami. Jedną kryptowalutę mógłby dodać tylko raz.
 
 - Usuwanie kryptowalut z sekcji ulubione
--- Zalogowany użytkownik powinien mieć możliwość usunięcia kryptowalut z sekcji "ulubione" ze swojego profilu.
+  - Zalogowany użytkownik powinien mieć możliwość usunięcia kryptowalut z sekcji "ulubione" ze swojego profilu.
 
 - Wyszukiwanie kryptowalut
--- Zalogowany użytkownik powinien mieć możliwość korzystania z pola wyszukiwania aby ułatwić dostęp do sprawdzenia konkretnej kryptowaluty. 
+  - Zalogowany użytkownik powinien mieć możliwość korzystania z pola wyszukiwania aby ułatwić dostęp do sprawdzenia konkretnej kryptowaluty. 
 Biblioteki:
 
 
