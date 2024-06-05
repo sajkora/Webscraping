@@ -30,7 +30,7 @@
 - Frontend: Flask, HTML, CSS
 - Backend: Python, MySQL
 
-###Wykorzystane biblioteki:
+### Wykorzystane biblioteki:
 - BeautifulSoup - biblioteka umożliwiająca scraping danych poprzez przeglądanie kodu HTML wybranej strony
 - Playwright - biblioteka imitująca przeglądarkę w celu ułatwienia scrapingu
 - Pandas - biblioteka umożliwiająca manipulację danymi
