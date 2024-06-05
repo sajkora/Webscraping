@@ -38,7 +38,9 @@
 - Pandas - biblioteka umożliwiająca manipulację danymi
 
 ### Architektura uruchomieniowa:
-- Python, Poetry
+- Python - obsługa całej aplikacji
+- Poetry - narzędzie do zarządzania zależnościami ułatwiające konfigurację projektu
+- MySql - baza danych przechowująca zescrapowane dane
 
 
 ### ==================================================================
