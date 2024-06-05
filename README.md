@@ -11,8 +11,10 @@
 | 1             | Scrapowanie giełdy kryptowalut | Aplikacja będzie scrapować dane ze strony o tematyce kryptowalut Coingecko | 1 | Wymagania funkcjonalne |
 | 2             | Osadzenie w frameworku Flask   | Aplikacja będzie osadzona w webowym frameworku Flask w celu przedstawienia zescrapowanych danych | 1 | Wymagania funkcjonalne |
 | 3             | Dostęp do arkusza całego z poziomu aplikacji     | Dostęp do całego zescrapowanego arkusza na stronie | 3 | Wymagania funkcjonalne |
-| 4             | Mozliwosc pobrania arkusza     | Możliwość pobrania zescrapowanego arkusza za pomocą dedykowanego przycisku | 2 | Wymagania funkcjonalne |
-| 5             | Dokumentacja     | Poświadczenie ze strony o legalności wykonywanego scrapingu | 2 | Wymagania funkcjonalne |
+| 4             | Logowanie i rejestracja     | Użytkownicy aby korzystać z aplikacji muszą być zalogowani | 1 | Wymagania funkcjonalne |
+| 5             | Dodawanie i usuwanie ulubionych kryptowalut     | Dostęp do listy ulubionych kryptowalut w zakładce Profil | 1 | Wymagania funkcjonalne |
+| 6             | Mozliwosc pobrania arkusza     | Możliwość pobrania zescrapowanego arkusza za pomocą dedykowanego przycisku | 2 | Wymagania funkcjonalne |
+| 7             | Dokumentacja     | Poświadczenie ze strony o legalności wykonywanego scrapingu | 2 | Wymagania funkcjonalne |
 
 ## Autorzy
 - Adrian Sikora
